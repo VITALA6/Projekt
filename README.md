@@ -2,11 +2,14 @@
 Projekt i implementacja programu obliczającego całkę złożoną metodą trapezów. 
 
 # Tematy dokumentacji
-* [Sformułowanie zadania]( #Sformułowaniezadania)
-* [Opis problemu]
-* [Schematy blokowe]
-* [Instrukcja programu]
-
+* [Tematy dokumentacji](#tematy-dokumentacji)
+* [Sformułowanie zadania](#sformułowanie-zadania)
+* [Opis problemu](#opis-problemu)
+* [Porównanie wyników](#porównanie-wyników)
+* [Schematy blokowe](#schematy-blokowe)
+* [Instrukcja programu](#instrukcja-programu)
+* [Przykłady działania](#przykłady-działania)
+* [Żródła](#źródła)
     
 ## Sformułowanie zadania
 Celem programu jest obliczenie wartości całki oznaczonej wybranej funkcji za pomocą metody trapezów. Użytkownik może wybrać jedną z dostępnych funkcji matematycznych oraz sposób wprowadzenia granic całkowania – ręcznie lub z pliku. Wynik obliczeń może być wyświetlony na ekranie, zapisany do pliku lub obie opcje mogą zostać wykonane jednocześnie.
@@ -51,6 +54,11 @@ Czyli wartość całki oznaczonej
 ![](https://cdn.discordapp.com/attachments/603599707796668426/1335694488559026266/image.png?ex=67a119ee&is=679fc86e&hm=d0714e61f9382fbe6228cd21cdc3b5574cfe91d6ad7990f0baf65f0dabc338a1&)
 oszacowana metodą trapezów dla n=4 wynosi 19.78.
 
+## Porównanie wyników
+
+![](https://cdn.discordapp.com/attachments/603599707796668426/1335708258169786388/image.png?ex=67a126c1&is=679fd541&hm=ddcf0e8c9cfa5b330a0ebca4c4a01f2d6a6ef2ea54c4617cf822e8bd8bb030a8&)
+
+
 ## Schematy blokowe
 - Main
 ```mermaid
@@ -92,6 +100,7 @@ Zapis --> Koniec
 Wyswietl --> Koniec
 Oba --> Koniec
 ```
+
 ## Instrukcja programu
 1. Uruchomienie programu
 Program należy skompilować i uruchomić w konsoli.
@@ -120,3 +129,51 @@ Użytkownik wybiera sposób prezentacji wyniku:
 Użytkownik może powtórzyć proces lub zakończyć program
 
 ## Przykłady działania
+### Wybranie funkcji
+Przed:
+
+![](https://cdn.discordapp.com/attachments/603599707796668426/1335710388179832867/image.png?ex=67a128bc&is=679fd73c&hm=844ffe0f5d5d4e9417be7d1b34155e31e54515923b76f44e347ca4db782ab7d0&)
+
+Po:
+
+![](https://cdn.discordapp.com/attachments/603599707796668426/1335710582120120401/image.png?ex=67a128eb&is=679fd76b&hm=c7de47cdf687ffc681737f71a936aa6a4d22cd6b04a231f1138b1d1e12f513eb&)
+
+### Wybór wprowadzenia granic całkowania
+Przed:
+
+![](https://cdn.discordapp.com/attachments/603599707796668426/1335711682869071992/image.png?ex=67a129f1&is=679fd871&hm=776e95eb7f2fbc51cfa6dc8d41572efd92af6fcd9c9962bc9c54f9f12da8e223&)
+
+Po:
+
+![](https://cdn.discordapp.com/attachments/603599707796668426/1335711718373851267/image.png?ex=67a129f9&is=679fd879&hm=ac12f2e698a56f0eda21aeae41a4327f2fa59fac4ef8872f51f06a7b6372a27e&)
+
+### Wprowadzenie podziałów(n)
+Przed:
+
+![](https://cdn.discordapp.com/attachments/603599707796668426/1335711718373851267/image.png?ex=67a129f9&is=679fd879&hm=ac12f2e698a56f0eda21aeae41a4327f2fa59fac4ef8872f51f06a7b6372a27e&)
+
+Po:
+
+![](https://cdn.discordapp.com/attachments/603599707796668426/1335711774359421079/image.png?ex=67a12a07&is=679fd887&hm=e996de99649d6ea8181bdccb6cd23bdbeeff3ebe8fa0f753eefabf36fd46b638&)
+
+### Wybór sposobu wyświetlania wyników
+Przez:
+
+![](https://cdn.discordapp.com/attachments/603599707796668426/1335711774359421079/image.png?ex=67a12a07&is=679fd887&hm=e996de99649d6ea8181bdccb6cd23bdbeeff3ebe8fa0f753eefabf36fd46b638&)
+
+Po:
+
+![](https://cdn.discordapp.com/attachments/603599707796668426/1335711941384998944/image.png?ex=67a12a2f&is=679fd8af&hm=a8e4f8811bed9a5268b8d4a0573602c667bf2d1d9d125ecec267c9b29a4da8fa&)
+
+## Źródła
+- Visual Studio Code version: 1.96.4
+https://code.visualstudio.com/
+
+- gcc (Rev3, Built by MSYS2 project) 13.2.0
+https://code.visualstudio.com/docs/cpp/config-mingw
+
+-   https://www.learncpp.com/
+-	https://cplusplus.com/doc/tutorial/
+-   https://www.mathros.net.ua/
+-	https://www.wolframalpha.com/
+-   https://books.goalkicker.com/CPlusPlusBook/

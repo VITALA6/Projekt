@@ -52,6 +52,7 @@ Czyli wartość całki oznaczonej
 oszacowana metodą trapezów dla n=4 wynosi 19.78.
 
 ## Schematy blokowe
+- Main
 ```mermaid
 graph TB
 Start([Start]) --> Init["Ustaw kodowanie (chcp 65001)"]
@@ -63,3 +64,59 @@ Wprowadz --> Oblicz["Oblicz i zaprezentuj wynik"]
 Oblicz --> Loop
 Loop -->|Nie| Koniec([Koniec programu])
 ```
+
+
+- Funk
+```mermaid
+graph TB
+Start([Start]) --> Menu["Wyświetl menu funkcji"]
+Menu --> Wybor{"Wybór funkcji"}
+Wybor -->|a-g| Granice{"Sposób wprowadzenia granic"}
+Wybor -->|x| Koniec([Koniec])
+Granice -->|Z pliku| Plik{Sprawdź plik}
+Granice -->|Ręcznie| Reczywnie["Podaj a i b"]
+Plik -->|Istnieje| Wczytaj["Załaduj granice"]
+Plik -->|Nie istnieje| Blad["Błąd: Brak pliku"]
+Reczywnie --> Warunek{"a < b?"}
+Warunek -->|Nie| Reczywnie
+Warunek -->|Tak| Podzialy["Podaj liczbę podziałów n"]
+Wczytaj --> Podzialy
+Podzialy --> Walidacja{"n > 0?"}
+Walidacja -->|Nie| BladN["Błąd: Niepoprawne n"]
+Walidacja -->|Tak| Obliczenia["Oblicz metodą trapezów"]
+Obliczenia --> Prezentacja{"Sposób prezentacji"}
+Prezentacja -->|Plik| Zapis["Zapisz do pliku"]
+Prezentacja -->|Ekran| Wyswietl["Wyświetl wynik"]
+Prezentacja -->|Oba| Oba["Zapisz i wyświetl"]
+Zapis --> Koniec
+Wyswietl --> Koniec
+Oba --> Koniec
+```
+## Instrukcja programu
+1. Uruchomienie programu
+Program należy skompilować i uruchomić w konsoli.
+
+2. Wybór funkcji
+Po uruchomieniu programu użytkownik wybiera funkcję spośród podanych w menu (a-g).
+
+3. Określenie granic całkowania
+Użytkownik może:
+- Wczytać granice z pliku
+- Wprowadzić granice ręcznie
+
+4. Podanie liczby podziałów
+Użytkownik podaje liczbę przedziałów (musi być dodatnia).
+
+5. Obliczenie całki metodą trapezów
+Program oblicza wartość całki dla wybranej funkcji i zadanych parametrów.
+
+6. Prezentacja wyników
+Użytkownik wybiera sposób prezentacji wyniku:
+- Zapis do pliku
+- Wyświetlenie na ekranie
+- Obie opcje
+
+7. Powtórzenie procesu lub zakończenie programu
+Użytkownik może powtórzyć proces lub zakończyć program
+
+## Przykłady działania

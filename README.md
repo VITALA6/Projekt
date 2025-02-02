@@ -52,4 +52,14 @@ Czyli wartość całki oznaczonej
 oszacowana metodą trapezów dla n=4 wynosi 19.78.
 
 ## Schematy blokowe
-
+```mermaid
+graph TB
+Start([Start]) --> Init["Ustaw kodowanie (chcp 65001)"]
+Init --> Load["Wczytaj nazwy funkcji z pliku"]
+Load --> Loop{Sprawdź poprawność wyboru}
+Loop -->|Tak| WyborGranic["Wybierz sposób wprowadzenia granic"]
+WyborGranic --> Wprowadz["Wprowadź granice całkowania"]
+Wprowadz --> Oblicz["Oblicz i zaprezentuj wynik"]
+Oblicz --> Loop
+Loop -->|Nie| Koniec([Koniec programu])
+```

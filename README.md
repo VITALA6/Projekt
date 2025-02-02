@@ -177,3 +177,4 @@ https://code.visualstudio.com/docs/cpp/config-mingw
 -   https://www.mathros.net.ua/
 -	https://www.wolframalpha.com/
 -   https://books.goalkicker.com/CPlusPlusBook/
+-   https://chatgpt.com/

@@ -1,4 +1,15 @@
-#Vitalii Hural
-Informatyka
-Nr. albumu - 91494
-Projekt i implementacja programu obliczającego całkę złożoną metodą trapezów. 
+## Метод трапецій
+
+Метод трапецій використовується для чисельного інтегрування. Формула має вигляд:
+
+\[
+\int_{a}^{b} f(x) \,dx \approx \frac{b-a}{2} \left( f(a) + f(b) \right)
+\]
+
+Для поділу відрізка на \( n \) рівних частин використовується розширена формула:
+
+\[
+\int_{a}^{b} f(x) \,dx \approx \frac{h}{2} \sum_{i=0}^{n} \left( f(x_i) + f(x_{i+1}) \right)
+\]
+
+де \( h = \frac{b-a}{n} \) — крок розбиття.

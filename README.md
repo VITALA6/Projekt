@@ -2,8 +2,8 @@
 Projekt i implementacja programu obliczającego całkę złożoną metodą trapezów. 
 
 # Tematy dokumentacji
-* [Sformułowanie zadania]( #Sformułowaniezadania)
-* [Opis problemu]
+* [Sformułowanie zadania](#Sformułowaniezadania)
+* [Opis problemu](#Opisproblemu)
 * [Schematy blokowe]
 * [Instrukcja programu]
 

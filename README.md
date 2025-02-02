@@ -38,9 +38,12 @@ Krok 1: Obliczenie długości podziału
 Krok 2: Wyznaczenie wartości funkcji w punktach podziału
 
 Punkty podziału:
+
 ![](https://cdn.discordapp.com/attachments/603599707796668426/1335693409620328491/image.png?ex=67a118ec&is=679fc76c&hm=c066deb6140205195a3ce0f013433ec024a8bbcee654fc5a7bdf04feaf5241e3&)
+
 Krok 3: Podstawienie do wzoru
 ![](https://cdn.discordapp.com/attachments/603599707796668426/1335693440729612410/image.png?ex=67a118f4&is=679fc774&hm=cc66156c299719fe9782b7b8eb7eb5de665b93d9da1db33e53165cbe3fc16f83&)
+
 Wynik: I~19.78
 
 Czyli wartość całki oznaczonej

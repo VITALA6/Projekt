@@ -16,7 +16,7 @@ Metoda trapezów to numeryczna metoda obliczania całek oznaczonych. Całka ozna
 
 Wzór na metodę trapezów:
 
-![](https://cdn.discordapp.com/attachments/603599707796668426/1335691402897653780/image.png?ex=67a1170e&is=679fc58e&hm=3125d159399fba2b795e46fee409aa2ebfb66c6bd596643187b8a53041cc54bd&)
+![](https://cdn.discordapp.com/attachments/603599707796668426/1335692856383242372/image.png?ex=67a11868&is=679fc6e8&hm=337425d56f6c576b2bf1f0264015cc8676063b60272f8f99e8c09c03e7f2eb87&)
 
 gdzie:
 * ![](https://cdn.discordapp.com/attachments/603599707796668426/1335682397043167292/image.png?ex=67a10eab&is=679fbd2b&hm=7664bf4e09d60a91ab63016c7985a4127d5dd804a55b235f6214e57724ebcf1f&)

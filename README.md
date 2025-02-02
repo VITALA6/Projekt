@@ -1,7 +1,7 @@
 # Metoda trapezów w C++. 
 Projekt i implementacja programu obliczającego całkę złożoną metodą trapezów. 
 
-# Tematy dokumentacji
+# Treść dokumentacji
 * [Tematy dokumentacji](#tematy-dokumentacji)
 * [Sformułowanie zadania](#sformułowanie-zadania)
 * [Opis problemu](#opis-problemu)

@@ -3,7 +3,7 @@ Projekt i implementacja programu obliczającego całkę złożoną metodą trape
 
 # Tematy dokumentacji
 * [Sformułowanie zadania](#Sformułowaniezadania)
-* [Opis problemu](#Opisproblemu)
+* [Opis problemu](#opis-problemu)
 * [Schematy blokowe]
 * [Instrukcja programu]
 

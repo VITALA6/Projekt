@@ -22,42 +22,115 @@ Wzór na metodę trapezów:
 ![](https://cdn.discordapp.com/attachments/603599707796668426/1335692856383242372/image.png?ex=67a11868&is=679fc6e8&hm=337425d56f6c576b2bf1f0264015cc8676063b60272f8f99e8c09c03e7f2eb87&)
 
 gdzie:
-* ![](https://cdn.discordapp.com/attachments/603599707796668426/1335693240367579197/image.png?ex=67a118c4&is=679fc744&hm=60d5c21d9934995b4197cff2d8b9ae1bf4ee5105b4b72d6b4105506f96b2899a&)
+
+$$
+h = \frac{b - a}{n}
+$$
+
 -długość podprzedziału.
 
 - n – liczba podziałów,
-- xi=a+i⋅h – punkty podziału przedziału.
 
-### Przykład rozwiązania
-Obliczmy przybliżoną wartość całki oznaczonej dla funkcji:
+$$
+x_i = a+i⋅h
+$$
 
-![](https://cdn.discordapp.com/attachments/603599707796668426/1335693284978200576/image.png?ex=67a118cf&is=679fc74f&hm=06c8ee38e67d6f6642967ee153b0b346efb689fda55ddb23e7b0e5fd69247bf8&)
+-punkty podziału przedziału.
 
-w przedziale [0,3] za pomocą metody trapezów dla n=4 (podział na 4 przedziały).
+## Metoda trapezów dla funkcji \( f(x) = x^2 + 2x + 1 \)
 
-Krok 1: Obliczenie długości podziału
-![](https://cdn.discordapp.com/attachments/603599707796668426/1335693325159628832/image.png?ex=67a118d8&is=679fc758&hm=ebb5a6346f6b844c67c12cb0b1d011624486cbbed7e9a803946bda4147cdc3ee&)
+Funkcja:
 
-Krok 2: Wyznaczenie wartości funkcji w punktach podziału
+$$
+f(x) = x^2 + 2x + 1
+$$
 
-Punkty podziału:
+w przedziale \([0,3]\) za pomocą metody trapezów dla \( n=4 \) (podział na 4 przedziały).
 
-![](https://cdn.discordapp.com/attachments/603599707796668426/1335693409620328491/image.png?ex=67a118ec&is=679fc76c&hm=c066deb6140205195a3ce0f013433ec024a8bbcee654fc5a7bdf04feaf5241e3&)
+### Krok 1: Obliczenie długości podziału
 
-Krok 3: Podstawienie do wzoru
+$$
+h = \frac{b - a}{n} = \frac{3 - 0}{4} = 0.75
+$$
 
-![](https://cdn.discordapp.com/attachments/603599707796668426/1335693440729612410/image.png?ex=67a118f4&is=679fc774&hm=cc66156c299719fe9782b7b8eb7eb5de665b93d9da1db33e53165cbe3fc16f83&)
+### Krok 2: Wyznaczenie wartości funkcji w punktach podziału
 
-Wynik: I~19.78
+**Punkty podziału:**
 
-Czyli wartość całki oznaczonej
-![](https://cdn.discordapp.com/attachments/603599707796668426/1335694488559026266/image.png?ex=67a119ee&is=679fc86e&hm=d0714e61f9382fbe6228cd21cdc3b5574cfe91d6ad7990f0baf65f0dabc338a1&)
-oszacowana metodą trapezów dla n=4 wynosi 19.78.
+$$
+x_0 = 0, \quad x_1 = 0.75, \quad x_2 = 1.5, \quad x_3 = 2.25, \quad x_4 = 3
+$$
+
+**Obliczamy wartości funkcji \( f(x) = x^2 + 2x + 1 \) w tych punktach:**
+
+$$
+f(0) = 0^2 + 2(0) + 1 = 1
+$$
+
+$$
+f(0.75) = (0.75)^2 + 2(0.75) + 1 = 3.3125
+$$
+
+$$
+f(1.5) = (1.5)^2 + 2(1.5) + 1 = 6.25
+$$
+
+$$
+f(2.25) = (2.25)^2 + 2(2.25) + 1 = 9.8125
+$$
+
+$$
+f(3) = 3^2 + 2(3) + 1 = 13
+$$
+
+### Krok 3: Podstawienie do wzoru
+
+$$
+I \approx \frac{h}{2} \left( f(0) + 2(f(0.75) + f(1.5) + f(2.25)) + f(3) \right)
+$$
+
+$$
+I \approx \frac{0.75}{2} \left( 1 + 2(3.3125 + 6.25 + 9.8125) + 13 \right)
+$$
+
+$$
+I \approx \frac{0.75}{2} \left( 1 + 2 \times 19.375 + 13 \right)
+$$
+
+$$
+I \approx \frac{0.75}{2} \times (1 + 38.75 + 13)
+$$
+
+$$
+I \approx \frac{0.75}{2} \times 52.75
+$$
+
+$$
+I \approx 19.78125
+$$
+
+**Wynik: 19.78**
+
+Czyli wartość całki oznaczonej:
+
+$$
+\int_{0}^{3} (x^2 + 2x + 1)dx
+$$
+
+oszacowana metodą trapezów dla \( n=4 \) wynosi **19.78**.
+
 
 ## Porównanie wyników
 
-![](https://cdn.discordapp.com/attachments/603599707796668426/1335708258169786388/image.png?ex=67a126c1&is=679fd541&hm=ddcf0e8c9cfa5b330a0ebca4c4a01f2d6a6ef2ea54c4617cf822e8bd8bb030a8&)
-
+| Funkcja | Całka analityczna | Metoda trapezów (*n* = 100) | Błąd |
+|---------|-------------------|---------------------|------|
+| a ∫₋₁¹ 2 dx | 4 | 4.0 | 0.0 |
+| b ∫₀³ (x² + 2x + 1) dx | 21 | 21.0005 | 0.0005 |
+| c ∫₀² x³ dx | 4 | 4.00044 | 0.00044 |
+| d ∫₀ˡⁿ² 4eˣ dx | 4 | 4.00002 | 0.00002 |
+| e ∫₀π/₂ cos x dx | 1 | 0.999979 | 0.000021 |
+| f ∫₀π (cos x + sin x) dx | 2 | 1.99984 | 0.00016 |
+| g ∫₀π x sin x dx | π ≈ 3.1416 | 3.14133 | 0.00027 |
 
 ## Schematy blokowe
 - Main

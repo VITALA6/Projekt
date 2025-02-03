@@ -271,3 +271,5 @@ void ObliczIZaprezentujWynik(char wybranaFunkcja, double dolnaGranica, double go
             break;
     }
 }
+
+

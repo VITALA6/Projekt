@@ -98,10 +98,16 @@ int WyborWyswietleniaWyniku() {
 
 // Funkcja do ręcznego wprowadzania granic
 void graniceRecznie(double& dolnaGranica, double& gornaGranica) {
-    std::cout << " Podaj dolną granicę (a): ";
-    std::cin >> dolnaGranica;
-    std::cout << " Podaj górną granicę (b): ";
-    std::cin >> gornaGranica;
+    do {
+        std::cout << " Podaj dolną granicę (a): ";
+        std::cin >> dolnaGranica;
+        std::cout << " Podaj górną granicę (b): ";
+        std::cin >> gornaGranica;
+
+        if (dolnaGranica >= gornaGranica) {
+            std::cout << " Błąd: Dolna granica musi być mniejsza od górnej granicy. Spróbuj ponownie.\n";
+        }
+    } while (dolnaGranica >= gornaGranica); // Повторюємо, доки a < b
 }
 
 // Funkcja do wczytywania granic z pliku
@@ -170,7 +176,7 @@ void UstalGraniceCalkowania(char wybranaFunkcja, double& dolnaGranica, double& g
         gornaGranica = graniceFunkcji[index].gornaGranica;
     } else {
         std::cout << " Nie znaleziono granic dla wybranej funkcji!\n";
-        exit(1);
+        return;
     }
 }
 
@@ -214,13 +220,25 @@ void ObliczIZaprezentujWynik(char wybranaFunkcja, double dolnaGranica, double go
     int liczbaPodzialow = PodajLiczbePodzialow();
     double wynik = ObliczCalkeMetodaTrapezow(dolnaGranica, gornaGranica, liczbaPodzialow, wybranaFunkcja);
 
-    int wyborWyniku = WyborWyswietleniaWyniku();
-    if (wyborWyniku == 1) {
-        WyswietlWynik(wybranaFunkcja, liczbaPodzialow, wynik);
-    } else if (wyborWyniku == 2) {
-        std::cout << " Wynik: " << wynik << "\n";
-    } else if (wyborWyniku == 3) {
-        std::cout << " Wynik: " << wynik << "\n";
-        WyswietlWynik(wybranaFunkcja, liczbaPodzialow, wynik);
-    }
+    int poprawnyWybor = 1;
+
+    do{
+        int wyborWyniku = WyborWyswietleniaWyniku();
+
+        switch (wyborWyniku)
+        {
+        case 1:
+            WyswietlWynik(wybranaFunkcja, liczbaPodzialow, wynik);
+            break;
+        case 2:
+            std::cout << " Wynik: " << wynik << "\n";
+            break;
+        case 3:
+            std::cout << " Wynik: " << wynik << "\n";
+            WyswietlWynik(wybranaFunkcja, liczbaPodzialow, wynik);
+            break;
+        default:
+            return;
+        }
+    }while (poprawnyWybor == 1);
 }

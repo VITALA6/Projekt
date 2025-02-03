@@ -1,4 +1,4 @@
-#include "funkcje.cpp" // Dołączenie pliku z funkcjami
+#include "funk.cpp" // Dołączenie pliku z funkcjami
 
 int main() {
     system("chcp 65001 >> null"); // Obsługa polskich znaków

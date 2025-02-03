@@ -1,0 +1,7 @@
+f(x) = 2
+f(x) = x² + 2x + 1
+f(x) = x³
+f(x) = 4e^x
+f(x) = cos(x)
+f(x) = cos(x) + sin(x)
+f(x) = x * sin(x)

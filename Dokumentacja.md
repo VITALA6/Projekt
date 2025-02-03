@@ -250,7 +250,7 @@ https://code.visualstudio.com/docs/cpp/config-mingw
 
 
     ### Metoda trapezów
--   https://www.mathros.net.ua/
+-   [https://www.mathros.net.ua/](https://www.mathros.net.ua/obchyslennja-vyznachenyh-integraliv-metodom-trapecij.html)
 
 
     ### Obliczenia analityczne

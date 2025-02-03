@@ -1,22 +1,51 @@
-#include <iostream>
-#include <cmath>
-#include <fstream>
-#include <cctype>
+#include <iostream>  // Biblioteka do obsługi strumieni wejścia/wyjścia (np. cin, cout)
+#include <cmath>     // Biblioteka do funkcji matematycznych (np. pow, exp, cos, sin)
+#include <fstream>   // Biblioteka do obsługi plików (np. ifstream, ofstream)
+#include <cctype>    // Biblioteka do funkcji operujących na znakach (np. tolower)
 
+// Funkcja do wyboru funkcji
 char WybierzFunkcje();
+
+// Funkcja do sprawdzania poprawności wyboru funkcji
 int SprawdzWybor(char& funkcja);
+
+// Funkcja do wczytywania nazw funkcji z pliku
 void wczytajNazwyFunkcji(const std::string& plikZNazwamiFunkcji);
+
+// Funkcja do wprowadzania granic ręcznie
 void graniceRecznie(double& dolnaGranica, double& gornaGranica);
+
+// Funkcja do wczytywania granic z pliku
 void graniceZPliku(const std::string& plikZGranicami);
+
+// Funkcja do ustalania granic całkowania
 void UstalGraniceCalkowania(int wyborGranic, char wybranaFunkcja, double& dolnaGranica, double& gornaGranica);
+
+// Funkcja do wyboru sposobu wprowadzenia granic
 int WyborWprowadzeniaGranic();
+
+// Funkcja do wyświetlania menu wyboru granic
 void WyswietlMenuGranic();
+
+// Funkcja do wyświetlania menu wyników
 void WyswietlMenuWynikow();
+
+// Funkcja do wyboru sposobu wyświetlenia wyników
 int WyborWyswietleniaWyniku();
+
+// Funkcja do wprowadzania liczby podziałów
 int PodajLiczbePodzialow();
+
+// Funkcja do obliczania wartości funkcji
 double ObliczWartoscFunkcji(double x, char wybranaFunkcja);
+
+// Funkcja do obliczania całki metodą trapezów
 double ObliczCalkeMetodaTrapezow(double dolnaGranica, double gornaGranica, int liczbaPodzialow, char wybranaFunkcja);
+
+// Funkcja do wyświetlania wyniku
 void ZapiszWynikWpliku(char wybranaFunkcja, int liczbaPodzialow, double wynik);
+
+// Funkcja do obliczania i prezentacji wyniku
 void ObliczIZaprezentujWynik(char wybranaFunkcja, double dolnaGranica, double gornaGranica);
 
 // Struktura do przechowywania granic całkowania
@@ -56,6 +85,7 @@ int SprawdzWybor(char& funkcja) {
     if ((funkcja >= 'a' && funkcja <= 'g')) {
         return 1; // Poprawny wybór funkcji
     } else if (funkcja == 'x') {
+        std::cout << "Program zakończony.\n"; 
         return 0; // Użytkownik wybrał zakończenie programu
     } else {
         std::cout << "\nNieprawidłowy wybór. Spróbuj ponownie.\n";
@@ -66,10 +96,7 @@ int SprawdzWybor(char& funkcja) {
 // Funkcja do wczytywania nazw funkcji z pliku
 void wczytajNazwyFunkcji(const std::string& plikZNazwamiFunkcji) {
     std::ifstream plik(plikZNazwamiFunkcji);
-    if (!plik) {
-        std::cout << " Nie udało się otworzyć pliku " << plikZNazwamiFunkcji << "!\n";
-        return;
-    }
+
     std::string nazwa;
     for (int i = 0; i < 7; ++i) {
         std::getline(plik, nazwa);
@@ -95,10 +122,7 @@ void graniceRecznie(double& dolnaGranica, double& gornaGranica) {
 // Funkcja do wczytywania granic z pliku
 void graniceZPliku(const std::string& plikZGranicami) {
     std::ifstream plik(plikZGranicami);
-    if (!plik) {
-        std::cout << " Nie udało się otworzyć pliku " << plikZGranicami << "!\n";
-        return;
-    }
+
     char funkcja;
     double dolna, gorna;
     int index = 0;
@@ -247,5 +271,3 @@ void ObliczIZaprezentujWynik(char wybranaFunkcja, double dolnaGranica, double go
             break;
     }
 }
-
-

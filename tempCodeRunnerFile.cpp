@@ -1,23 +1,7 @@
 #include <iostream>
 #include <cmath>
 #include <fstream>
-#include <cctype>
-
-char WybierzFunkcje();
-int SprawdzWybor(char& funkcja);
-void wczytajNazwyFunkcji(const std::string& plikZNazwamiFunkcji);
-void graniceRecznie(double& dolnaGranica, double& gornaGranica);
-void graniceZPliku(const std::string& plikZGranicami);
-void UstalGraniceCalkowania(int wyborGranic, char wybranaFunkcja, double& dolnaGranica, double& gornaGranica);
-int WyborWprowadzeniaGranic();
-void WyswietlMenuGranic();
-void WyswietlMenuWynikow();
-int WyborWyswietleniaWyniku();
-int PodajLiczbePodzialow();
-double ObliczWartoscFunkcji(double x, char wybranaFunkcja);
-double ObliczCalkeMetodaTrapezow(double dolnaGranica, double gornaGranica, int liczbaPodzialow, char wybranaFunkcja);
-void ZapiszWynikWpliku(char wybranaFunkcja, int liczbaPodzialow, double wynik);
-void ObliczIZaprezentujWynik(char wybranaFunkcja, double dolnaGranica, double gornaGranica);
+#include <cctype> // для tolower
 
 // Struktura do przechowywania granic całkowania
 struct Granice {
@@ -50,46 +34,60 @@ char WybierzFunkcje() {
     return tolower(wybranaFunkcja);
 }
 
-// Funkcja do sprawdzania poprawności wyboru funkcji
-int SprawdzWybor(char& funkcja) {
-    funkcja = WybierzFunkcje();
-    if ((funkcja >= 'a' && funkcja <= 'g')) {
-        return 1; // Poprawny wybór funkcji
-    } else if (funkcja == 'x') {
-        return 0; // Użytkownik wybrał zakończenie programu
-    } else {
-        std::cout << "\nNieprawidłowy wybór. Spróbuj ponownie.\n";
-        return SprawdzWybor(funkcja); // Rekurencyjnie proś o ponowny wybór
-    }
-}
-
-// Funkcja do wczytywania nazw funkcji z pliku
-void wczytajNazwyFunkcji(const std::string& plikZNazwamiFunkcji) {
-    std::ifstream plik(plikZNazwamiFunkcji);
-    if (!plik) {
-        std::cout << " Nie udało się otworzyć pliku " << plikZNazwamiFunkcji << "!\n";
-        return;
-    }
-    std::string nazwa;
-    for (int i = 0; i < 7; ++i) {
-        std::getline(plik, nazwa);
-        nazwyFunkcji[i] = nazwa;
-    }
-    plik.close();
-}
-
-// Funkcja do wprowadzania granic ręcznie
-void graniceRecznie(double& dolnaGranica, double& gornaGranica) {
-    do {
-        std::cout << " Podaj dolną granicę (a): ";
-        std::cin >> dolnaGranica;
-        std::cout << " Podaj górną granicę (b): ";
-        std::cin >> gornaGranica;
-
-        if (dolnaGranica >= gornaGranica) {
-            std::cout << " Błąd: Dolna granica musi być mniejsza od górnej granicy. Spróbuj ponownie.\n";
+// Funkcja do sprawdzania poprawności wyбору функції
+int SprawdzPoprawnoscWyboru(char& wybranaFunkcja) {
+    wybranaFunkcja = WybierzFunkcje();
+    if ((wybranaFunkcja >= 'a' && wybranaFunkcja <= 'g') || wybranaFunkcja == 'x') {
+        if (wybranaFunkcja == 'x') {
+            std::cout << "\nProgram zakończony.\n";
+            return 0;
         }
-    } while (dolnaGranica >= gornaGranica); 
+        return 1;
+    }
+    std::cout << "\nNieprawidłowy wybór. Spróbuj ponownie.\n";
+    return SprawdzPoprawnoscWyboru(wybranaFunkcja);
+}
+
+// Funkcja do wyświetlania menu wyboru granic
+void WyswietlMenuGranic() {
+    std::cout << "=======================================================\n";
+    std::cout << "| Wybierz sposób wprowadzenia granic całkowania:      |\n";
+    std::cout << "=======================================================\n";
+    std::cout << "| 1. Wczytaj granice z pliku                          |\n";
+    std::cout << "| 2. Wprowadź granice ręcznie                         |\n";
+    std::cout << "=======================================================\n";
+}
+
+// Funkcja do wyboru sposobu wprowadzenia granic
+int WyborWprowadzeniaGranic() {
+    int wyborGranic = 0;
+    do {
+        WyswietlMenuGranic();
+        std::cout << " Twój wybór: ";
+        std::cin >> wyborGranic;
+        if (wyborGranic != 1 && wyborGranic != 2) {
+            std::cout << " Nieprawidłowy wybór. Spróbuj ponownie.\n";
+        }
+    } while (wyborGranic != 1 && wyborGranic != 2);
+    return wyborGranic;
+}
+
+// Funkcja do ustalania granic całkowania
+void UstalGraniceCalkowania(int wyborGranic, char wybranaFunkcja, double& dolnaGranica, double& gornaGranica) {
+    int index = wybranaFunkcja - 'a';
+    wyborGranic = WyborWprowadzeniaGranic();
+    if (wyborGranic == 1) {
+        if (index >= 0 && index < 7) {
+        dolnaGranica = graniceFunkcji[index].dolnaGranica;
+        gornaGranica = graniceFunkcji[index].gornaGranica;
+    } else {
+        std::cout << " Nie znaleziono granic dla wybranej funkcji!\n";
+    }
+    } else if (wyborGranic == 2) {
+        graniceRecznie(dolnaGranica, gornaGranica);
+    } else {
+        std::cout << " Nieprawidłowy wybór. Spróbuj ponownie.\n";
+    }
 }
 
 // Funkcja do wczytywania granic z pliku
@@ -108,59 +106,18 @@ void graniceZPliku(const std::string& plikZGranicami) {
     plik.close();
 }
 
-// Funkcja do ustalania granic całkowania
-void UstalGraniceCalkowania(int wyborGranic, char wybranaFunkcja, double& dolnaGranica, double& gornaGranica) {
-    int index = wybranaFunkcja - 'a';
-    if (wyborGranic == 1) {  // Jeśli użytkownik wybrał plik
-        if (index >= 0 && index < 7) {
-            dolnaGranica = graniceFunkcji[index].dolnaGranica;
-            gornaGranica = graniceFunkcji[index].gornaGranica;
-        } else {
-            std::cout << " Nie znaleziono granic dla wybranej funkcji!\n";
-        }
-    } else if (wyborGranic == 2) {  // Jeśli użytkownik chce podać granice ręcznie
-        graniceRecznie(dolnaGranica, gornaGranica);
-    } else {
-        std::cout << " Nieprawidłowy wybór. Spróbuj ponownie.\n";
-    }
-}
-
-// Funkcja do wyboru sposobu wprowadzenia granic
-int WyborWprowadzeniaGranic() {
-    int wyborGranic = 0;
+// Funkcja do ręчного wprowadzania granic
+void graniceRecznie(double& dolnaGranica, double& gornaGranica) {
     do {
-        WyswietlMenuGranic();
-        std::cout << " Twój wybór: ";
-        std::cin >> wyborGranic;
-        if (wyborGranic != 1 && wyborGranic != 2) {
-            std::cout << " Nieprawidłowy wybór. Spróbuj ponownie.\n";
-        }
-    } while (wyborGranic != 1 && wyborGranic != 2);
-    return wyborGranic;
-}
+        std::cout << " Podaj dolną granicę (a): ";
+        std::cin >> dolnaGranica;
+        std::cout << " Podaj górną granicę (b): ";
+        std::cin >> gornaGranica;
 
-// Funkcja do wyświetlania menu wyboru granic
-void WyswietlMenuGranic() {
-    std::cout << "=======================================================\n";
-    std::cout << "| Wybierz sposób wprowadzenia granic całkowania:      |\n";
-    std::cout << "=======================================================\n";
-    std::cout << "| 1. Wczytaj granice z pliku                          |\n";
-    std::cout << "| 2. Wprowadź granice ręcznie                         |\n";
-    std::cout << "=======================================================\n";
-}
-
-// Funkcja do wyboru sposobu wyświetlenia wyników
-int WyborWyswietleniaWyniku() {
-    int wybor;
-    do {
-        WyswietlMenuWynikow();
-        std::cout << " Twój wybór: ";
-        std::cin >> wybor;
-        if (wybor < 1 || wybor > 3) {
-            std::cout << " Nieprawidłowy wybór. Spróbuj ponownie.\n";
+        if (dolnaGranica >= gornaGranica) {
+            std::cout << " Błąd: Dolna granica musi być mniejsza od górnej granicy. Spróbuj ponownie.\n";
         }
-    } while (wybor < 1 || wybor > 3);
-    return wybor;
+    } while (dolnaGranica >= gornaGranica); 
 }
 
 // Funkcja do wyświetlania menu wyników
@@ -172,6 +129,20 @@ void WyswietlMenuWynikow() {
     std::cout << "| 2. Wyświetl wynik na ekranie                        |\n";
     std::cout << "| 3. Zapisz do pliku i wyświetl na ekranie            |\n";
     std::cout << "=======================================================\n";
+}
+
+// Funkcja do wyбору sposobu wyświetlenia wyników
+int WyborWyswietleniaWyniku() {
+    int wybor;
+    do {
+        WyswietlMenuWynikow();
+        std::cout << " Twój wybór: ";
+        std::cin >> wybor;
+        if (wybor < 1 || wybor > 3) {
+            std::cout << " Nieprawidłowy wybór. Spróbuj ponownie.\n";
+        }
+    } while (wybor < 1 || wybor > 3);
+    return wybor;
 }
 
 // Funkcja do wprowadzania liczby podziałów
@@ -212,7 +183,7 @@ double ObliczCalkeMetodaTrapezow(double dolnaGranica, double gornaGranica, int l
 }
 
 // Funkcja do wyświetlania wyniku
-void ZapiszWynikWpliku(char wybranaFunkcja, int liczbaPodzialow, double wynik) {
+void WyswietlWynikWpliku(char wybranaFunkcja, int liczbaPodzialow, double wynik) {
     std::ofstream plik("wyniki.txt", std::ios::app);
     if (plik) {
         plik << "=======================================================\n";
@@ -226,20 +197,30 @@ void ZapiszWynikWpliku(char wybranaFunkcja, int liczbaPodzialow, double wynik) {
     }
 }
 
+// Funkcja do wprowadzania granic
+void WprowadzGranice(double& dolnaGranica, double& gornaGranica, int wyborGranic) {
+    if (wyborGranic == 1) {
+        graniceZPliku("granice.txt");
+    } else if (wyborGranic == 2) {
+        graniceRecznie(dolnaGranica, gornaGranica);
+    }
+}
+
 // Funkcja do obliczania i prezentacji wyniku
 void ObliczIZaprezentujWynik(char wybranaFunkcja, double dolnaGranica, double gornaGranica) {
+    UstalGraniceCalkowania(wybranaFunkcja, dolnaGranica, gornaGranica);
     int liczbaPodzialow = PodajLiczbePodzialow();
     double wynik = ObliczCalkeMetodaTrapezow(dolnaGranica, gornaGranica, liczbaPodzialow, wybranaFunkcja);
     int wyborWyswietlenia = WyborWyswietleniaWyniku();
     switch (wyborWyswietlenia) {
         case 1:
-            ZapiszWynikWpliku(wybranaFunkcja, liczbaPodzialow, wynik);
+            WyswietlWynikWpliku(wybranaFunkcja, liczbaPodzialow, wynik);
             break;
         case 2:
             std::cout << " Wynik: " << wynik << '\n';
             break;
         case 3:
-            ZapiszWynikWpliku(wybranaFunkcja, liczbaPodzialow, wynik);
+            WyswietlWynikWpliku(wybranaFunkcja, liczbaPodzialow, wynik);
             std::cout << " Wynik: " << wynik << '\n';
             break;
         default:
@@ -248,4 +229,17 @@ void ObliczIZaprezentujWynik(char wybranaFunkcja, double dolnaGranica, double go
     }
 }
 
-
+// Funkcja do wczytywania nazw funkcji z pliku
+void wczytajNazwyFunkcji(const std::string& plikZNazwamiFunkcji) {
+    std::ifstream plik(plikZNazwamiFunkcji);
+    if (!plik) {
+        std::cout << " Nie udało się otworzyć pliku " << plikZNazwamiFunkcji << "!\n";
+        return;
+    }
+    std::string nazwa;
+    for (int i = 0; i < 7; ++i) {
+        std::getline(plik, nazwa);
+        nazwyFunkcji[i] = nazwa;
+    }
+    plik.close();
+}

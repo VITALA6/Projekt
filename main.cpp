@@ -5,10 +5,10 @@ int main() {
     wczytajNazwyFunkcji("nazwyFunkcji.txt"); // Wczytanie nazw funkcji z pliku
 
     char wybranaFunkcja;
-    while (SprawdzPoprawnoscWyboru(wybranaFunkcja)) { // Główna pętla programu
+    while (SprawdzWybor(wybranaFunkcja)) { // Główna pętla programu
         int wyborGranic = WyborWprowadzeniaGranic(); // Wybór sposobu wprowadzenia granic
         double dolnaGranica, gornaGranica;
-        WprowadzGranice(dolnaGranica, gornaGranica, wyborGranic); // Wprowadzenie granic
+        UstalGraniceCalkowania(wyborGranic, wybranaFunkcja, dolnaGranica, gornaGranica); // Ustalenie granic
         ObliczIZaprezentujWynik(wybranaFunkcja, dolnaGranica, gornaGranica); // Obliczenie i prezentacja wyniku
     }
     return 0;

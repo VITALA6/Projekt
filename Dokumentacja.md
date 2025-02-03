@@ -135,43 +135,41 @@ oszacowana metodą trapezów dla \( n=4 \) wynosi **19.78**.
 ## Schematy blokowe
 - Main
 ```mermaid
-graph TB
-Start([Start]) --> Init["Ustaw kodowanie (chcp 65001)"]
-Init --> Load["Wczytaj nazwy funkcji z pliku"]
-Load --> Loop{Sprawdź poprawność wyboru}
-Loop -->|Tak| WyborGranic["Wybierz sposób wprowadzenia granic"]
-WyborGranic --> Wprowadz["Wprowadź granice całkowania"]
-Wprowadz --> Oblicz["Oblicz i zaprezentuj wynik"]
-Oblicz --> Loop
-Loop -->|Nie| Koniec([Koniec programu])
+graph TD;
+    A(Start) --> B[Ustawienie kodowania: chcp 65001]
+    B --> C[Wczytanie nazw funkcji z pliku nazwyFunkcji.txt]
+    C --> D[Oczekiwanie na wybór funkcji przez użytkownika]
+    
+    D --> E{Czy użytkownik wpisał 'x'?}
+    E -->|Tak| F[Koniec programu]
+    E -->|Nie| G[Wybór sposobu wprowadzenia granic]
+    
+    G --> H[Ustalenie dolnej i górnej granicy całkowania]
+    H --> I[Obliczenie i prezentacja wyniku]
+    I --> D
+
 ```
 
 
 - Funk
 ```mermaid
-graph TB
-Start([Start]) --> Menu["Wyświetl menu funkcji"]
-Menu --> Wybor{"Wybór funkcji"}
-Wybor -->|a-g| Granice{"Sposób wprowadzenia granic"}
-Wybor -->|x| Koniec([Koniec])
-Granice -->|Z pliku| Plik{Sprawdź plik}
-Granice -->|Ręcznie| Reczywnie["Podaj a i b"]
-Plik -->|Istnieje| Wczytaj["Załaduj granice"]
-Plik -->|Nie istnieje| Blad["Błąd: Brak pliku"]
-Reczywnie --> Warunek{"a < b?"}
-Warunek -->|Nie| Reczywnie
-Warunek -->|Tak| Podzialy["Podaj liczbę podziałów n"]
-Wczytaj --> Podzialy
-Podzialy --> Walidacja{"n > 0?"}
-Walidacja -->|Nie| BladN["Błąd: Niepoprawne n"]
-Walidacja -->|Tak| Obliczenia["Oblicz metodą trapezów"]
-Obliczenia --> Prezentacja{"Sposób prezentacji"}
-Prezentacja -->|Plik| Zapis["Zapisz do pliku"]
-Prezentacja -->|Ekran| Wyswietl["Wyświetl wynik"]
-Prezentacja -->|Oba| Oba["Zapisz i wyświetl"]
-Zapis --> Koniec
-Wyswietl --> Koniec
-Oba --> Koniec
+ graph TD;
+    A[Start] --> B[Wybór funkcji]
+    B -->|x - Zakończ program| X[Zakończenie programu] --> Y[[Program zakończony]]
+    B -->|Poprawny wybór| C[Wybór sposobu wprowadzenia granic]
+    B -->|Niepoprawny wybór| B
+    C -->|Z pliku| D[Wczytanie granic z pliku]
+    C -->|Ręcznie| E[Wprowadzenie granic ręcznie]
+    D --> F[Podanie liczby podziałów]
+    E --> F
+    F --> G[Obliczanie wartości funkcji]
+    G --> H[Obliczanie całki metodą trapezów]
+    H --> I[Wybór sposobu prezentacji wyniku]
+    I -->|Zapisz do pliku| J[Zapis do pliku wyniki.txt]
+    I -->|Wyświetl na ekranie| K[Wyświetlenie wyniku]
+    I -->|Zapisz i wyświetl| J & K
+    J --> L[Koniec obliczeń, powrót do wyboru funkcji] --> B
+    K --> L
 ```
 
 ## Instrukcja programu
@@ -245,9 +243,23 @@ https://code.visualstudio.com/
 - gcc (Rev3, Built by MSYS2 project) 13.2.0
 https://code.visualstudio.com/docs/cpp/config-mingw
 
+    ### Lekcje cpp 
 -   https://www.learncpp.com/
 -	https://cplusplus.com/doc/tutorial/
--   https://www.mathros.net.ua/
+-	https://www.youtube.com/watch?v=-TkoO8Z07hI
+
+
+    ### Metoda trapezów
+-   [https://www.mathros.net.ua/](https://www.mathros.net.ua/obchyslennja-vyznachenyh-integraliv-metodom-trapecij.html)
+
+
+    ### Obliczenia analityczne
 -	https://www.wolframalpha.com/
+
+
+    ### Książka o cpp
 -   https://books.goalkicker.com/CPlusPlusBook/
--   https://www.deepseek.com/
+
+
+    ### Schemat blokowy
+-   https://www.mermaidchart.com/

@@ -153,23 +153,33 @@ graph TD;
 
 - Funk
 ```mermaid
- graph TD;
+graph TD;
     A[Start] --> B[Wybór funkcji]
     B -->|x - Zakończ program| X[Zakończenie programu] --> Y[[Program zakończony]]
     B -->|Poprawny wybór| C[Wybór sposobu wprowadzenia granic]
     B -->|Niepoprawny wybór| B
-    C -->|Z pliku| D[Wczytanie granic z pliku]
-    C -->|Ręcznie| E[Wprowadzenie granic ręcznie]
-    D --> F[Podanie liczby podziałów]
-    E --> F
-    F --> G[Obliczanie wartości funkcji]
-    G --> H[Obliczanie całki metodą trapezów]
-    H --> I[Wybór sposobu prezentacji wyniku]
-    I -->|Zapisz do pliku| J[Zapis do pliku wyniki.txt]
-    I -->|Wyświetl na ekranie| K[Wyświetlenie wyniku]
-    I -->|Zapisz i wyświetl| J & K
-    J --> L[Koniec obliczeń, powrót do wyboru funkcji] --> B
-    K --> L
+
+    C -->|Z pliku| D[Wczytanie granic z pliku] --> F[Sprawdzenie poprawności granic]
+    C -->|Ręcznie| E[Wprowadzenie granic ręcznie] --> F
+    
+    F -->|a >= b| M[Błąd: Dolna granica musi być mniejsza od górnej] 
+    M -.->|Popraw dane| E
+
+    F --> G[Podanie liczby podziałów]
+    G -->|n <= 0| N[Błąd: Liczba podziałów musi być dodatnia]
+    N -.->|Popraw dane| G
+    
+    G --> H[Obliczanie wartości funkcji]
+    H --> I[Obliczanie całki metodą trapezów]
+    I --> J[Wybór sposobu prezentacji wyniku]
+
+    J -->|Zapisz do pliku| K[Zapis do pliku wyniki.txt]
+    J -->|Wyświetl na ekranie| L[Wyświetlenie wyniku]
+    J -->|Zapisz i wyświetl| K & L
+
+    K --> O[Koniec obliczeń, powrót do wyboru funkcji]
+    L --> O
+    O --> B
 ```
 
 ## Instrukcja programu

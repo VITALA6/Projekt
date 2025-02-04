@@ -249,16 +249,16 @@ https://code.visualstudio.com/docs/cpp/config-mingw
 -	https://www.youtube.com/watch?v=-TkoO8Z07hI
 
 
+    ### Książka o cpp
+-   https://books.goalkicker.com/CPlusPlusBook/
+
+
     ### Metoda trapezów
 -   [https://www.mathros.net.ua/](https://www.mathros.net.ua/obchyslennja-vyznachenyh-integraliv-metodom-trapecij.html)
 
 
     ### Obliczenia analityczne
 -	https://www.wolframalpha.com/
-
-
-    ### Książka o cpp
--   https://books.goalkicker.com/CPlusPlusBook/
 
 
     ### Schemat blokowy

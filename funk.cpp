@@ -134,20 +134,28 @@ void graniceZPliku(const std::string& plikZGranicami) {
 
 // Funkcja do ustalania granic całkowania
 void UstalGraniceCalkowania(int wyborGranic, char wybranaFunkcja, double& dolnaGranica, double& gornaGranica) {
+    graniceZPliku("granice.txt");
     int index = wybranaFunkcja - 'a';
-    if (wyborGranic == 1) {  // Jeśli użytkownik wybrał plik
-        if (index >= 0 && index < 7) {
+    
+    if (index >= 0 && index < 7) {
+        if (wyborGranic == 1) {
             dolnaGranica = graniceFunkcji[index].dolnaGranica;
             gornaGranica = graniceFunkcji[index].gornaGranica;
+
+            if (dolnaGranica == 0 && gornaGranica == 0) {
+                std::cout << "Nie wczytano granic dla funkcji " << wybranaFunkcja << " z pliku. Wprowadź granice ręcznie.\n";
+                graniceRecznie(dolnaGranica, gornaGranica);
+            }
+        } else if (wyborGranic == 2) {
+            graniceRecznie(dolnaGranica, gornaGranica);
         } else {
-            std::cout << " Nie znaleziono granic dla wybranej funkcji!\n";
+            std::cout << "Nieprawidłowy wybór. Spróbuj ponownie.\n";
         }
-    } else if (wyborGranic == 2) {  // Jeśli użytkownik chce podać granice ręcznie
-        graniceRecznie(dolnaGranica, gornaGranica);
     } else {
-        std::cout << " Nieprawidłowy wybór. Spróbuj ponownie.\n";
+        std::cout << "Nieprawidłowy indeks funkcji!\n";
     }
 }
+
 
 // Funkcja do wyboru sposobu wprowadzenia granic
 int WyborWprowadzeniaGranic() {

@@ -1,3 +1,4 @@
+#include <cstdlib>   // Biblioteka do funkcji systemowych (np. system)
 #include "funk.cpp" // Dołączenie pliku z funkcjami
 
 int main() {

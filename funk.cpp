@@ -12,6 +12,9 @@ int SprawdzWybor(char& funkcja);
 // Funkcja do wczytywania nazw funkcji z pliku
 void wczytajNazwyFunkcji(const std::string& plikZNazwamiFunkcji);
 
+// Funkcja do sprawdzania czy dolna granica nie jest większa od górnej
+int sprawdzCzyAnieWiekszeOdB(double a, double b);
+
 // Funkcja do wprowadzania granic ręcznie
 void graniceRecznie(double& dolnaGranica, double& gornaGranica);
 
@@ -85,10 +88,10 @@ int SprawdzWybor(char& funkcja) {
     if ((funkcja >= 'a' && funkcja <= 'g')) {
         return 1; // Poprawny wybór funkcji
     } else if (funkcja == 'x') {
-        std::cout << "Program zakończony.\n"; 
+        std::cout << " Program zakończony.\n"; 
         return 0; // Użytkownik wybrał zakończenie programu
     } else {
-        std::cout << "\nNieprawidłowy wybór. Spróbuj ponownie.\n";
+        std::cout << "\n Nieprawidłowy wybór. Spróbuj ponownie.\n";
         return SprawdzWybor(funkcja); // Rekurencyjnie proś o ponowny wybór
     }
 }
@@ -105,18 +108,24 @@ void wczytajNazwyFunkcji(const std::string& plikZNazwamiFunkcji) {
     plik.close();
 }
 
+// Funkcja do sprawdzania czy dolna granica nie jest większa od górnej
+int sprawdzCzyAnieWiekszeOdB(double a, double b) {
+    if (a > b) {
+        std::cout << " Dolna granica nie może być większa od górnej. Spróbuj ponownie.\n";
+        return 1;
+    }
+    return 0;
+}
+
 // Funkcja do wprowadzania granic ręcznie
 void graniceRecznie(double& dolnaGranica, double& gornaGranica) {
-    do {
         std::cout << " Podaj dolną granicę (a): ";
         std::cin >> dolnaGranica;
         std::cout << " Podaj górną granicę (b): ";
         std::cin >> gornaGranica;
-
-        if (dolnaGranica >= gornaGranica) {
-            std::cout << " Błąd: Dolna granica musi być mniejsza od górnej granicy. Spróbuj ponownie.\n";
+        if(sprawdzCzyAnieWiekszeOdB(dolnaGranica, gornaGranica)) {
+            graniceRecznie(dolnaGranica, gornaGranica);
         }
-    } while (dolnaGranica >= gornaGranica); 
 }
 
 // Funkcja do wczytywania granic z pliku
@@ -134,21 +143,25 @@ void graniceZPliku(const std::string& plikZGranicami) {
 
 // Funkcja do ustalania granic całkowania
 void UstalGraniceCalkowania(int wyborGranic, char wybranaFunkcja, double& dolnaGranica, double& gornaGranica) {
-    graniceZPliku("granice.txt");
     int index = wybranaFunkcja - 'a';
     
-        if (wyborGranic == 1) {
-            dolnaGranica = graniceFunkcji[index].dolnaGranica;
-            gornaGranica = graniceFunkcji[index].gornaGranica;
+    if (wyborGranic == 1) {
+        dolnaGranica = graniceFunkcji[index].dolnaGranica;
+        gornaGranica = graniceFunkcji[index].gornaGranica;
 
-            if (dolnaGranica == 0 && gornaGranica == 0) {
-                std::cout << "Nie wczytano granic dla funkcji " << wybranaFunkcja << " z pliku. Wprowadź granice ręcznie.\n";
-                graniceRecznie(dolnaGranica, gornaGranica);
-            }
-            
-        } else if (wyborGranic == 2) {
+        if (sprawdzCzyAnieWiekszeOdB(dolnaGranica, gornaGranica)) {
+            std::cout << " W pliku dla funkcji (" << nazwyFunkcji[index] << ") podano nieprawidłowe granice. Wprowadź granice ręcznie.\n";
             graniceRecznie(dolnaGranica, gornaGranica);
         }
+
+        if (dolnaGranica == 0 && gornaGranica == 0) {
+            std::cout << " Nie wczytano granic dla funkcji " << wybranaFunkcja << " z pliku. Wprowadź granice ręcznie.\n";
+            graniceRecznie(dolnaGranica, gornaGranica);
+        }
+        
+    } else if (wyborGranic == 2) {
+        graniceRecznie(dolnaGranica, gornaGranica);
+    }
 }
 
 
@@ -270,9 +283,7 @@ void ObliczIZaprezentujWynik(char wybranaFunkcja, double dolnaGranica, double go
             std::cout << " Wynik: " << wynik << '\n';
             break;
         default:
-            std::cout << "Nieprawidłowy wybór. Spróbuj ponownie.\n";
+            std::cout << " Nieprawidłowy wybór. Spróbuj ponownie.\n";
             break;
     }
 }
-
-

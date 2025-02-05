@@ -5,8 +5,9 @@ int main() {
     system("chcp 65001 >> null"); // Ustawienie kodowania na UTF-8 dla obsługi polskich znaków
     char wybranaFunkcja; // Zmienna przechowująca wybraną funkcję
 
-    // Wczytanie nazw funkcji z pliku "nazwyFunkcji.txt"
+    // Wczytanie nazw funkcji i granic całkowania z pliku
     wczytajNazwyFunkcji("nazwyFunkcji.txt");
+    graniceZPliku("granice.txt");
 
     // Główna pętla programu
     while (SprawdzWybor(wybranaFunkcja)) { // Sprawdzenie poprawności wyboru funkcji

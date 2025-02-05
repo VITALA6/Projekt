@@ -138,7 +138,8 @@ oszacowana metodą trapezów dla \( n=4 \) wynosi **19.78**.
 graph TD;
     A(Start) --> B[Ustawienie kodowania: chcp 65001]
     B --> C[Wczytanie nazw funkcji z pliku nazwyFunkcji.txt]
-    C --> D[Oczekiwanie na wybór funkcji przez użytkownika]
+    C --> J[Wczytanie granic z pliku granice.txt]
+    J --> D[Oczekiwanie na wybór funkcji przez użytkownika]
     
     D --> E{Czy użytkownik wpisał 'x'?}
     E -->|Tak| F[Koniec programu]
@@ -147,6 +148,7 @@ graph TD;
     G --> H[Ustalenie dolnej i górnej granicy całkowania]
     H --> I[Obliczenie i prezentacja wyniku]
     I --> D
+
 
 ```
 
@@ -162,7 +164,7 @@ graph TD;
     C -->|Z pliku| D[Wczytanie granic z pliku] --> F[Sprawdzenie poprawności granic]
     C -->|Ręcznie| E[Wprowadzenie granic ręcznie] --> F
     
-    F -->|a >= b| M[Błąd: Dolna granica musi być mniejsza od górnej] 
+    F -->|a > b| M[Błąd: Dolna granica musi być mniejsza od górnej] 
     M -.->|Popraw dane| E
 
     F --> G[Podanie liczby podziałów]

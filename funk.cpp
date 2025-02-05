@@ -137,7 +137,6 @@ void UstalGraniceCalkowania(int wyborGranic, char wybranaFunkcja, double& dolnaG
     graniceZPliku("granice.txt");
     int index = wybranaFunkcja - 'a';
     
-    if (index >= 0 && index < 7) {
         if (wyborGranic == 1) {
             dolnaGranica = graniceFunkcji[index].dolnaGranica;
             gornaGranica = graniceFunkcji[index].gornaGranica;
@@ -146,14 +145,10 @@ void UstalGraniceCalkowania(int wyborGranic, char wybranaFunkcja, double& dolnaG
                 std::cout << "Nie wczytano granic dla funkcji " << wybranaFunkcja << " z pliku. Wprowadź granice ręcznie.\n";
                 graniceRecznie(dolnaGranica, gornaGranica);
             }
+            
         } else if (wyborGranic == 2) {
             graniceRecznie(dolnaGranica, gornaGranica);
-        } else {
-            std::cout << "Nieprawidłowy wybór. Spróbuj ponownie.\n";
         }
-    } else {
-        std::cout << "Nieprawidłowy indeks funkcji!\n";
-    }
 }
 
 

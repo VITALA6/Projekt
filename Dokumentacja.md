@@ -134,39 +134,13 @@ oszacowana metodą trapezów dla \( n=4 \) wynosi **19.78**.
 
 ## Schematy blokowe
 - Main
+
 ![](https://github.com/VITALA6/Projekt/blob/main/mainShem.drawio.png)
 
 
-- Funk
-```mermaid
-graph TD;
-    A[Start] --> B[Wybór funkcji]
-    B -->|x - Zakończ program| X[Zakończenie programu] --> Y[[Program zakończony]]
-    B -->|Poprawny wybór| C[Wybór sposobu wprowadzenia granic]
-    B -->|Niepoprawny wybór| B
-
-    C -->|Z pliku| D[Wczytanie granic z pliku] --> F[Sprawdzenie poprawności granic]
-    C -->|Ręcznie| E[Wprowadzenie granic ręcznie] --> F
-    
-    F -->|a > b| M[Błąd: Dolna granica musi być mniejsza od górnej] 
-    M -.->|Popraw dane| E
-
-    F --> G[Podanie liczby podziałów]
-    G -->|n <= 0| N[Błąd: Liczba podziałów musi być dodatnia]
-    N -.->|Popraw dane| G
-    
-    G --> H[Obliczanie wartości funkcji]
-    H --> I[Obliczanie całki metodą trapezów]
-    I --> J[Wybór sposobu prezentacji wyniku]
-
-    J -->|Zapisz do pliku| K[Zapis do pliku wyniki.txt]
-    J -->|Wyświetl na ekranie| L[Wyświetlenie wyniku]
-    J -->|Zapisz i wyświetl| K & L
-
-    K --> O[Koniec obliczeń, powrót do wyboru funkcji]
-    L --> O
-    O --> B
-```
+- Funkcja wyborWprowadzeniaGranic()
+  
+![](https://github.com/VITALA6/Projekt/blob/main/shemat_wyborWprowadzeniaGranic.drawio.png)
 
 ## Instrukcja programu
 1. Uruchomienie programu

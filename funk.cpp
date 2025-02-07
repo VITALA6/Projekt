@@ -4,10 +4,10 @@
 #include <cctype>    // Biblioteka do funkcji operujących na znakach (np. tolower)
 
 // Funkcja do wyboru funkcji
-char WybierzFunkcje();
+char wybierzFunkcje();
 
 // Funkcja do sprawdzania poprawności wyboru funkcji
-int SprawdzWybor(char& funkcja);
+int sprawdzWybor(char& funkcja);
 
 // Funkcja do wczytywania nazw funkcji z pliku
 void wczytajNazwyFunkcji(const std::string& plikZNazwamiFunkcji);
@@ -22,34 +22,34 @@ void graniceRecznie(double& dolnaGranica, double& gornaGranica);
 void graniceZPliku(const std::string& plikZGranicami);
 
 // Funkcja do ustalania granic całkowania
-void UstalGraniceCalkowania(int wyborGranic, char wybranaFunkcja, double& dolnaGranica, double& gornaGranica);
+void ustalGraniceCalkowania(int wyborGranic, char wybranaFunkcja, double& dolnaGranica, double& gornaGranica);
 
 // Funkcja do wyboru sposobu wprowadzenia granic
-int WyborWprowadzeniaGranic();
+int wyborWprowadzeniaGranic();
 
 // Funkcja do wyświetlania menu wyboru granic
-void WyswietlMenuGranic();
+void wyswietlMenuGranic();
 
 // Funkcja do wyświetlania menu wyników
-void WyswietlMenuWynikow();
+void wyswietlMenuWynikow();
 
 // Funkcja do wyboru sposobu wyświetlenia wyników
-int WyborWyswietleniaWyniku();
+int wyborWyswietleniaWyniku();
 
 // Funkcja do wprowadzania liczby podziałów
-int PodajLiczbePodzialow();
+int podajLiczbePodzialow();
 
 // Funkcja do obliczania wartości funkcji
-double ObliczWartoscFunkcji(double x, char wybranaFunkcja);
+double obliczWartoscFunkcji(double x, char wybranaFunkcja);
 
 // Funkcja do obliczania całki metodą trapezów
-double ObliczCalkeMetodaTrapezow(double dolnaGranica, double gornaGranica, int liczbaPodzialow, char wybranaFunkcja);
+double obliczCalkeMetodaTrapezow(double dolnaGranica, double gornaGranica, int liczbaPodzialow, char wybranaFunkcja);
 
 // Funkcja do wyświetlania wyniku
-void ZapiszWynikWpliku(char wybranaFunkcja, int liczbaPodzialow, double wynik);
+void zapiszWynikWpliku(char wybranaFunkcja, int liczbaPodzialow, double wynik);
 
 // Funkcja do obliczania i prezentacji wyniku
-void ObliczIZaprezentujWynik(char wybranaFunkcja, double dolnaGranica, double gornaGranica);
+void obliczIZaprezentujWynik(char wybranaFunkcja, double dolnaGranica, double gornaGranica);
 
 // Struktura do przechowywania granic całkowania
 struct Granice {
@@ -62,9 +62,9 @@ Granice graniceFunkcji[7];
 std::string nazwyFunkcji[7];
 
 // Funkcja do wyboru funkcji
-char WybierzFunkcje() {
+char wybierzFunkcje() {
     char wybranaFunkcja = ' ';
-    std::cout << "=======================================================\n";
+    std::cout << "\n=======================================================\n";
     std::cout << "| Wybierz funkcję do obliczenia metodą trapezów:      |\n";
     std::cout << "=======================================================\n";
     std::cout << "| a. f(x) = 2,                     [a, b] = [-1, 1]   |\n";
@@ -83,16 +83,16 @@ char WybierzFunkcje() {
 }
 
 // Funkcja do sprawdzania poprawności wyboru funkcji
-int SprawdzWybor(char& funkcja) {
-    funkcja = WybierzFunkcje();
+int sprawdzWybor(char& funkcja) {
+    funkcja = wybierzFunkcje();
     if ((funkcja >= 'a' && funkcja <= 'g')) {
         return 1; // Poprawny wybór funkcji
     } else if (funkcja == 'x') {
         std::cout << " Program zakończony.\n"; 
-        return 0; // Użytkownik wybrał zakończenie programu
+        return 120; // Użytkownik wybrał zakończenie programu
     } else {
         std::cout << "\n Nieprawidłowy wybór. Spróbuj ponownie.\n";
-        return SprawdzWybor(funkcja); // Rekurencyjnie proś o ponowny wybór
+        return sprawdzWybor(funkcja); // Rekurencyjnie proś o ponowny wybór
     }
 }
 
@@ -142,7 +142,7 @@ void graniceZPliku(const std::string& plikZGranicami) {
 }
 
 // Funkcja do ustalania granic całkowania
-void UstalGraniceCalkowania(int wyborGranic, char wybranaFunkcja, double& dolnaGranica, double& gornaGranica) {
+void ustalGraniceCalkowania(int wyborGranic, char wybranaFunkcja, double& dolnaGranica, double& gornaGranica) {
     int index = wybranaFunkcja - 'a';
     
     if (wyborGranic == 1) {
@@ -166,10 +166,11 @@ void UstalGraniceCalkowania(int wyborGranic, char wybranaFunkcja, double& dolnaG
 
 
 // Funkcja do wyboru sposobu wprowadzenia granic
-int WyborWprowadzeniaGranic() {
-    int wyborGranic = 0;
-    do {
-        WyswietlMenuGranic();
+// Shemat blokowy
+int wyborWprowadzeniaGranic() {
+    int wyborGranic = 0;     
+    do {    
+        wyswietlMenuGranic();
         std::cout << " Twój wybór: ";
         std::cin >> wyborGranic;
         if (wyborGranic != 1 && wyborGranic != 2) {
@@ -180,7 +181,7 @@ int WyborWprowadzeniaGranic() {
 }
 
 // Funkcja do wyświetlania menu wyboru granic
-void WyswietlMenuGranic() {
+void wyswietlMenuGranic() {
     std::cout << "=======================================================\n";
     std::cout << "| Wybierz sposób wprowadzenia granic całkowania:      |\n";
     std::cout << "=======================================================\n";
@@ -190,10 +191,10 @@ void WyswietlMenuGranic() {
 }
 
 // Funkcja do wyboru sposobu wyświetlenia wyników
-int WyborWyswietleniaWyniku() {
+int wyborWyswietleniaWyniku() {
     int wybor;
     do {
-        WyswietlMenuWynikow();
+        wyswietlMenuWynikow();
         std::cout << " Twój wybór: ";
         std::cin >> wybor;
         if (wybor < 1 || wybor > 3) {
@@ -204,7 +205,7 @@ int WyborWyswietleniaWyniku() {
 }
 
 // Funkcja do wyświetlania menu wyników
-void WyswietlMenuWynikow() {
+void wyswietlMenuWynikow() {
     std::cout << "=======================================================\n";
     std::cout << "| Wybierz sposób wyświetlenia wyniku:                 |\n";
     std::cout << "=======================================================\n";
@@ -215,7 +216,7 @@ void WyswietlMenuWynikow() {
 }
 
 // Funkcja do wprowadzania liczby podziałów
-int PodajLiczbePodzialow() {
+int podajLiczbePodzialow() {
     int liczbaPodzialow;
     do {
         std::cout << " Podaj liczbę podziałów (n): ";
@@ -228,7 +229,7 @@ int PodajLiczbePodzialow() {
 }
 
 // Funkcja do obliczania wartości funkcji
-double ObliczWartoscFunkcji(double x, char wybranaFunkcja) {
+double obliczWartoscFunkcji(double x, char wybranaFunkcja) {
     switch (wybranaFunkcja) {
         case 'a': return 2;
         case 'b': return pow(x, 2.0) + 2 * x + 1;
@@ -242,17 +243,17 @@ double ObliczWartoscFunkcji(double x, char wybranaFunkcja) {
 }
 
 // Funkcja do obliczania całki metodą trapezów
-double ObliczCalkeMetodaTrapezow(double dolnaGranica, double gornaGranica, int liczbaPodzialow, char wybranaFunkcja) {
+double obliczCalkeMetodaTrapezow(double dolnaGranica, double gornaGranica, int liczbaPodzialow, char wybranaFunkcja) {
     double krok = (gornaGranica - dolnaGranica) / liczbaPodzialow;
-    double suma = ObliczWartoscFunkcji(dolnaGranica, wybranaFunkcja) + ObliczWartoscFunkcji(gornaGranica, wybranaFunkcja);
+    double suma = obliczWartoscFunkcji(dolnaGranica, wybranaFunkcja) + obliczWartoscFunkcji(gornaGranica, wybranaFunkcja);
     for (int i = 1; i < liczbaPodzialow; ++i) {
-        suma += 2 * ObliczWartoscFunkcji(dolnaGranica + i * krok, wybranaFunkcja);
+        suma += 2 * obliczWartoscFunkcji(dolnaGranica + i * krok, wybranaFunkcja);
     }
     return suma * (krok / 2.0);
 }
 
 // Funkcja do wyświetlania wyniku
-void ZapiszWynikWpliku(char wybranaFunkcja, int liczbaPodzialow, double wynik) {
+void zapiszWynikWpliku(char wybranaFunkcja, int liczbaPodzialow, double wynik) {
     std::ofstream plik("wyniki.txt", std::ios::app);
     if (plik) {
         plik << "=======================================================\n";
@@ -267,19 +268,19 @@ void ZapiszWynikWpliku(char wybranaFunkcja, int liczbaPodzialow, double wynik) {
 }
 
 // Funkcja do obliczania i prezentacji wyniku
-void ObliczIZaprezentujWynik(char wybranaFunkcja, double dolnaGranica, double gornaGranica) {
-    int liczbaPodzialow = PodajLiczbePodzialow();
-    double wynik = ObliczCalkeMetodaTrapezow(dolnaGranica, gornaGranica, liczbaPodzialow, wybranaFunkcja);
-    int wyborWyswietlenia = WyborWyswietleniaWyniku();
+void obliczIZaprezentujWynik(char wybranaFunkcja, double dolnaGranica, double gornaGranica) {
+    int liczbaPodzialow = podajLiczbePodzialow();
+    double wynik = obliczCalkeMetodaTrapezow(dolnaGranica, gornaGranica, liczbaPodzialow, wybranaFunkcja);
+    int wyborWyswietlenia = wyborWyswietleniaWyniku();
     switch (wyborWyswietlenia) {
         case 1:
-            ZapiszWynikWpliku(wybranaFunkcja, liczbaPodzialow, wynik);
+            zapiszWynikWpliku(wybranaFunkcja, liczbaPodzialow, wynik);
             break;
         case 2:
             std::cout << " Wynik: " << wynik << '\n';
             break;
         case 3:
-            ZapiszWynikWpliku(wybranaFunkcja, liczbaPodzialow, wynik);
+            zapiszWynikWpliku(wybranaFunkcja, liczbaPodzialow, wynik);
             std::cout << " Wynik: " << wynik << '\n';
             break;
         default:

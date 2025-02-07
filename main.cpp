@@ -3,22 +3,23 @@
 
 int main() {
     system("chcp 65001 >> null"); // Ustawienie kodowania na UTF-8 dla obsługi polskich znaków
-    char wybranaFunkcja; // Zmienna przechowująca wybraną funkcję
 
     // Wczytanie nazw funkcji i granic całkowania z pliku
     wczytajNazwyFunkcji("nazwyFunkcji.txt");
     graniceZPliku("granice.txt");
 
-    // Główna pętla programu
-    while (SprawdzWybor(wybranaFunkcja)) { // Sprawdzenie poprawności wyboru funkcji
-        int wyborGranic = WyborWprowadzeniaGranic(); // Wybór sposobu wprowadzenia granic całkowania
-        double dolnaGranica, gornaGranica; // Zmienne przechowujące granice całkowania
+    char wybranaFunkcja; // Zmienna przechowująca wybraną funkcję
 
+    // Główna pętla programu
+    while (sprawdzWybor(wybranaFunkcja)) { // Sprawdzenie poprawności wyboru funkcji
+        double dolnaGranica, gornaGranica; // Zmienne przechowujące granice całkowania
+        int wyborGranic = wyborWprowadzeniaGranic(); // Wybór sposobu wprowadzenia granic całkowania
+       
         // Ustalenie granic całkowania na podstawie wyboru użytkownika
-        UstalGraniceCalkowania(wyborGranic, wybranaFunkcja, dolnaGranica, gornaGranica);
+        ustalGraniceCalkowania(wyborGranic, wybranaFunkcja, dolnaGranica, gornaGranica);
 
         // Obliczenie i prezentacja wyniku całkowania
-        ObliczIZaprezentujWynik(wybranaFunkcja, dolnaGranica, gornaGranica);
+        obliczIZaprezentujWynik(wybranaFunkcja, dolnaGranica, gornaGranica);
     }
 
     return 0;

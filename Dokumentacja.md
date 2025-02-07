@@ -208,28 +208,29 @@ Po:
 
 ## Źródła
 - Visual Studio Code version: 1.96.4
-https://code.visualstudio.com/
+    [VScode](https://code.visualstudio.com/)
 
 - gcc (Rev3, Built by MSYS2 project) 13.2.0
-https://code.visualstudio.com/docs/cpp/config-mingw
+    [gcc](https://code.visualstudio.com/docs/cpp/config-mingw)
 
-    ### Lekcje cpp 
--   https://www.learncpp.com/
--	https://cplusplus.com/doc/tutorial/
--	https://www.youtube.com/watch?v=-TkoO8Z07hI
+    ### Lekcje C++
+-   [Podstawy Programowania](https://mirek.ii.uph.edu.pl/programowanie/)
+-   [Lekcje C++](https://www.learncpp.com/)
+-	[Dokumentacja po C++](https://cplusplus.com/doc/tutorial/)
+-	[Video Lekcja C++](https://www.youtube.com/watch?v=-TkoO8Z07hI)
 
 
     ### Książka o cpp
--   https://books.goalkicker.com/CPlusPlusBook/
+-   [CPlusPlusBook](https://books.goalkicker.com/CPlusPlusBook/)
 
 
     ### Metoda trapezów
--   [https://www.mathros.net.ua/](https://www.mathros.net.ua/obchyslennja-vyznachenyh-integraliv-metodom-trapecij.html)
+-   [mathros.net.ua](https://www.mathros.net.ua/obchyslennja-vyznachenyh-integraliv-metodom-trapecij.html)
 
 
     ### Obliczenia analityczne
--	https://www.wolframalpha.com/
+-   [wolframalpha](https://www.wolframalpha.com/)
 
 
     ### Schemat blokowy
--   https://www.mermaidchart.com/
+-   [draw.io](https://draw.io/)

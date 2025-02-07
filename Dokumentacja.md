@@ -134,23 +134,7 @@ oszacowana metodą trapezów dla \( n=4 \) wynosi **19.78**.
 
 ## Schematy blokowe
 - Main
-```mermaid
-graph TD;
-    A(Start) --> B[Ustawienie kodowania: chcp 65001]
-    B --> C[Wczytanie nazw funkcji z pliku nazwyFunkcji.txt]
-    C --> J[Wczytanie granic z pliku granice.txt]
-    J --> D[Oczekiwanie na wybór funkcji przez użytkownika]
-    
-    D --> E{Czy użytkownik wpisał 'x'?}
-    E -->|Tak| F[Koniec programu]
-    E -->|Nie| G[Wybór sposobu wprowadzenia granic]
-    
-    G --> H[Ustalenie dolnej i górnej granicy całkowania]
-    H --> I[Obliczenie i prezentacja wyniku]
-    I --> D
-
-
-```
+![](https://github.com/VITALA6/Projekt/blob/main/mainShem.drawio.png)
 
 
 - Funk

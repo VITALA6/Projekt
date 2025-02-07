@@ -134,55 +134,13 @@ oszacowana metodą trapezów dla \( n=4 \) wynosi **19.78**.
 
 ## Schematy blokowe
 - Main
-```mermaid
-graph TD;
-    A(Start) --> B[Ustawienie kodowania: chcp 65001]
-    B --> C[Wczytanie nazw funkcji z pliku nazwyFunkcji.txt]
-    C --> J[Wczytanie granic z pliku granice.txt]
-    J --> D[Oczekiwanie na wybór funkcji przez użytkownika]
-    
-    D --> E{Czy użytkownik wpisał 'x'?}
-    E -->|Tak| F[Koniec programu]
-    E -->|Nie| G[Wybór sposobu wprowadzenia granic]
-    
-    G --> H[Ustalenie dolnej i górnej granicy całkowania]
-    H --> I[Obliczenie i prezentacja wyniku]
-    I --> D
+
+![](https://github.com/VITALA6/Projekt/blob/main/mainShem.drawio.png)
 
 
-```
-
-
-- Funk
-```mermaid
-graph TD;
-    A[Start] --> B[Wybór funkcji]
-    B -->|x - Zakończ program| X[Zakończenie programu] --> Y[[Program zakończony]]
-    B -->|Poprawny wybór| C[Wybór sposobu wprowadzenia granic]
-    B -->|Niepoprawny wybór| B
-
-    C -->|Z pliku| D[Wczytanie granic z pliku] --> F[Sprawdzenie poprawności granic]
-    C -->|Ręcznie| E[Wprowadzenie granic ręcznie] --> F
-    
-    F -->|a > b| M[Błąd: Dolna granica musi być mniejsza od górnej] 
-    M -.->|Popraw dane| E
-
-    F --> G[Podanie liczby podziałów]
-    G -->|n <= 0| N[Błąd: Liczba podziałów musi być dodatnia]
-    N -.->|Popraw dane| G
-    
-    G --> H[Obliczanie wartości funkcji]
-    H --> I[Obliczanie całki metodą trapezów]
-    I --> J[Wybór sposobu prezentacji wyniku]
-
-    J -->|Zapisz do pliku| K[Zapis do pliku wyniki.txt]
-    J -->|Wyświetl na ekranie| L[Wyświetlenie wyniku]
-    J -->|Zapisz i wyświetl| K & L
-
-    K --> O[Koniec obliczeń, powrót do wyboru funkcji]
-    L --> O
-    O --> B
-```
+- Funkcja wyborWprowadzeniaGranic()
+  
+![](https://github.com/VITALA6/Projekt/blob/main/shemat_wyborWprowadzeniaGranic.drawio.png)
 
 ## Instrukcja programu
 1. Uruchomienie programu
@@ -250,28 +208,29 @@ Po:
 
 ## Źródła
 - Visual Studio Code version: 1.96.4
-https://code.visualstudio.com/
+    [VScode](https://code.visualstudio.com/)
 
 - gcc (Rev3, Built by MSYS2 project) 13.2.0
-https://code.visualstudio.com/docs/cpp/config-mingw
+    [gcc](https://code.visualstudio.com/docs/cpp/config-mingw)
 
-    ### Lekcje cpp 
--   https://www.learncpp.com/
--	https://cplusplus.com/doc/tutorial/
--	https://www.youtube.com/watch?v=-TkoO8Z07hI
+    ### Lekcje C++
+-   [Podstawy Programowania](https://mirek.ii.uph.edu.pl/programowanie/)
+-   [Lekcje C++](https://www.learncpp.com/)
+-	[Dokumentacja po C++](https://cplusplus.com/doc/tutorial/)
+-	[Video Lekcja C++](https://www.youtube.com/watch?v=-TkoO8Z07hI)
 
 
     ### Książka o cpp
--   https://books.goalkicker.com/CPlusPlusBook/
+-   [CPlusPlusBook](https://books.goalkicker.com/CPlusPlusBook/)
 
 
     ### Metoda trapezów
--   [https://www.mathros.net.ua/](https://www.mathros.net.ua/obchyslennja-vyznachenyh-integraliv-metodom-trapecij.html)
+-   [mathros.net.ua](https://www.mathros.net.ua/obchyslennja-vyznachenyh-integraliv-metodom-trapecij.html)
 
 
     ### Obliczenia analityczne
--	https://www.wolframalpha.com/
+-   [wolframalpha](https://www.wolframalpha.com/)
 
 
     ### Schemat blokowy
--   https://www.mermaidchart.com/
+-   [draw.io](https://draw.io/)

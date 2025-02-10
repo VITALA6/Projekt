@@ -141,12 +141,12 @@ oszacowana metodą trapezów dla \( n=4 \) wynosi **19.78**.
 ## Schematy blokowe
 - Main
 
-![]()
+![](https://github.com/VITALA6/Projekt/blob/main/mainShem.drawio.png)
 
 
 - Funkcja wyborWprowadzeniaGranic()
   
-![]()
+![](https://github.com/VITALA6/Projekt/blob/main/shemat_wyborWprowadzeniaGranic.drawio.png)
 
 ## Instrukcja programu
 1. Uruchomienie programu

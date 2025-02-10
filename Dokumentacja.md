@@ -1,3 +1,7 @@
+Vitalii Hural
+
+Nr. albumu - 91494
+
 # Metoda trapezów w C++. 
 Projekt i implementacja programu obliczającego całkę złożoną metodą trapezów. 
 

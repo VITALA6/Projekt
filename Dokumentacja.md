@@ -1,5 +1,7 @@
 Vitalii Hural
 
+Informatyka
+
 Nr. albumu - 91494
 
 # Metoda trapezów w C++. 

@@ -89,7 +89,7 @@ int sprawdzWybor(char& funkcja) {
         return 1; // Poprawny wybór funkcji
     } else if (funkcja == 'x') {
         std::cout << " Program zakończony.\n"; 
-        return 120; // Użytkownik wybrał zakończenie programu
+        return 0; // Użytkownik wybrał zakończenie programu
     } else {
         std::cout << "\n Nieprawidłowy wybór. Spróbuj ponownie.\n";
         return sprawdzWybor(funkcja); // Rekurencyjnie proś o ponowny wybór

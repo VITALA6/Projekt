@@ -179,38 +179,38 @@ Użytkownik może powtórzyć proces lub zakończyć program
 ### Wybranie funkcji
 Przed:
 
-![](https://cdn.discordapp.com/attachments/603599707796668426/1335710388179832867/image.png?ex=67a128bc&is=679fd73c&hm=844ffe0f5d5d4e9417be7d1b34155e31e54515923b76f44e347ca4db782ab7d0&)
+![]()
 
 Po:
 
-![](https://cdn.discordapp.com/attachments/603599707796668426/1335710582120120401/image.png?ex=67a128eb&is=679fd76b&hm=c7de47cdf687ffc681737f71a936aa6a4d22cd6b04a231f1138b1d1e12f513eb&)
+![]()
 
 ### Wybór wprowadzenia granic całkowania
 Przed:
 
-![](https://cdn.discordapp.com/attachments/603599707796668426/1335711682869071992/image.png?ex=67a129f1&is=679fd871&hm=776e95eb7f2fbc51cfa6dc8d41572efd92af6fcd9c9962bc9c54f9f12da8e223&)
+![]()
 
 Po:
 
-![](https://cdn.discordapp.com/attachments/603599707796668426/1335711718373851267/image.png?ex=67a129f9&is=679fd879&hm=ac12f2e698a56f0eda21aeae41a4327f2fa59fac4ef8872f51f06a7b6372a27e&)
+![]()
 
 ### Wprowadzenie podziałów(n)
 Przed:
 
-![](https://cdn.discordapp.com/attachments/603599707796668426/1335711718373851267/image.png?ex=67a129f9&is=679fd879&hm=ac12f2e698a56f0eda21aeae41a4327f2fa59fac4ef8872f51f06a7b6372a27e&)
+![]()
 
 Po:
 
-![](https://cdn.discordapp.com/attachments/603599707796668426/1335711774359421079/image.png?ex=67a12a07&is=679fd887&hm=e996de99649d6ea8181bdccb6cd23bdbeeff3ebe8fa0f753eefabf36fd46b638&)
+![]()
 
 ### Wybór sposobu wyświetlania wyników
 Przez:
 
-![](https://cdn.discordapp.com/attachments/603599707796668426/1335711774359421079/image.png?ex=67a12a07&is=679fd887&hm=e996de99649d6ea8181bdccb6cd23bdbeeff3ebe8fa0f753eefabf36fd46b638&)
+![]()
 
 Po:
 
-![](https://cdn.discordapp.com/attachments/603599707796668426/1335711941384998944/image.png?ex=67a12a2f&is=679fd8af&hm=a8e4f8811bed9a5268b8d4a0573602c667bf2d1d9d125ecec267c9b29a4da8fa&)
+![]()
 
 ## Źródła
 - Visual Studio Code version: 1.96.4

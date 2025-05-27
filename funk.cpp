@@ -1,54 +1,38 @@
-#include <iostream>  // Biblioteka do obsługi strumieni wejścia/wyjścia (np. cin, cout)
-#include <cmath>     // Biblioteka do funkcji matematycznych (np. pow, exp, cos, sin)
-#include <fstream>   // Biblioteka do obsługi plików (np. ifstream, ofstream)
-#include <cctype>    // Biblioteka do funkcji operujących na znakach (np. tolower)
+#include <iostream>  
+#include <cmath>     
+#include <fstream>   
+#include <cctype>    
 
-// Funkcja do wyboru funkcji
 char wybierzFunkcje();
 
-// Funkcja do sprawdzania poprawności wyboru funkcji
 int sprawdzWybor(char& funkcja);
 
-// Funkcja do wczytywania nazw funkcji z pliku
 void wczytajNazwyFunkcji(const std::string& plikZNazwamiFunkcji);
 
-// Funkcja do sprawdzania czy dolna granica nie jest większa od górnej
 int sprawdzCzyAnieWiekszeOdB(double a, double b);
 
-// Funkcja do wprowadzania granic ręcznie
 void graniceRecznie(double& dolnaGranica, double& gornaGranica);
 
-// Funkcja do wczytywania granic z pliku
 void graniceZPliku(const std::string& plikZGranicami);
 
-// Funkcja do ustalania granic całkowania
 void ustalGraniceCalkowania(int wyborGranic, char wybranaFunkcja, double& dolnaGranica, double& gornaGranica);
 
-// Funkcja do wyboru sposobu wprowadzenia granic
 int wyborWprowadzeniaGranic();
 
-// Funkcja do wyświetlania menu wyboru granic
 void wyswietlMenuGranic();
 
-// Funkcja do wyświetlania menu wyników
 void wyswietlMenuWynikow();
 
-// Funkcja do wyboru sposobu wyświetlenia wyników
 int wyborWyswietleniaWyniku();
 
-// Funkcja do wprowadzania liczby podziałów
 int podajLiczbePodzialow();
 
-// Funkcja do obliczania wartości funkcji
 double obliczWartoscFunkcji(double x, char wybranaFunkcja);
 
-// Funkcja do obliczania całki metodą trapezów
 double obliczCalkeMetodaTrapezow(double dolnaGranica, double gornaGranica, int liczbaPodzialow, char wybranaFunkcja);
 
-// Funkcja do wyświetlania wyniku
 void zapiszWynikWpliku(char wybranaFunkcja, int liczbaPodzialow, double wynik);
 
-// Funkcja do obliczania i prezentacji wyniku
 void obliczIZaprezentujWynik(char wybranaFunkcja, double dolnaGranica, double gornaGranica);
 
 // Struktura do przechowywania granic całkowania
